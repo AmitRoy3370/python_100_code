@@ -1,0 +1,107 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jan  7 10:25:20 2022
+
+@author: amit
+"""
+
+#question: In case of input data being supplied to the question, it should be assumed to be a console input.
+
+import re
+s = input()
+print(re.findall("\d+",s))
+
+
+#%%
+
+#question: Write a program to read an ASCII string and to convert it to a unicode string encoded by utf-8.
+
+import unicode
+
+s = input()
+u =unicode( s ,"utf-8")
+print (u)
+
+
+#%%
+
+##fibonacci
+
+def f(n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return f(n-1)+f(n-2)
+
+n=int(input())
+values = [str(f(x)) for x in range(0, n+1)]
+print(",".join(values))
+
+#%%
+
+#question: In case of input data being supplied to the question, it should be assumed to be a console input.
+
+def EvenGenerator(n):
+    i=0
+    while i<=n:
+        if i%2==0:
+            yield i
+        i+=1
+
+
+n=int(input())
+values = []
+for i in EvenGenerator(n):
+    values.append(str(i))
+
+print (",".join(values))
+
+
+#%%
+
+#binary search
+
+import math
+def cls(li, element):
+    bottom = 0
+    top = len(li)-1
+    index = -1
+    while top>=bottom and index==-1:
+        mid = int(math.floor((top+bottom)/2.0))
+        if li[mid]==element:
+            index = mid
+        elif li[mid]>element:
+            top = mid-1
+        else:
+            bottom = mid+1
+
+    return index
+
+li=[1,2,3,4,5,6,7]
+print (cls(li,11))
+print (cls(li,2))
+
+#%%
+
+#question: Please generate a random float where the value is between 10 and 100 using Python math module.
+
+import random
+print(random.uniform(10,100))
+
+#%%
+
+#question: Please write a program to generate a list with 5 random numbers between 100 and 200 inclusive.
+
+import random
+print(random.sample(range(100), 5))
+
+#%%
+
+#question: Please write a program to compress and decompress the string "hello world!hello world!hello world!hello world!".
+
+import zlib
+s = "hello world!hello world!hello world!hello world!"
+t = zlib.compress(s)
+print(t)
+print(zlib.decompress(t))
+
+#%%
