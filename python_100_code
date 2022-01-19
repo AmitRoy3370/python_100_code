@@ -1,0 +1,518 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jan  7 10:25:20 2022
+
+@author: amit
+"""
+
+#%%
+
+#problem 1
+
+for i in range(2000,3200):
+    if i%7==0 and i%5!=0:
+        print(i)
+
+
+#%%
+
+#problem 2
+
+n=int(input() )
+
+print("n: ",n)
+
+left=2
+right=n
+
+ans=1
+
+for i in range(2,n+1):
+    ans=ans*i
+
+print(ans);
+
+#%%
+
+#problem 3
+
+n=int(input() )
+
+mp=dict()
+
+for i in range(1,n+1):
+    mp[i]=i*i
+
+index=1
+
+for i in mp:
+    print(index," ",mp[i])
+    index=index+1
+
+#%%
+
+#problem 4
+
+a=input()
+
+print(a)
+
+t=tuple(a.split(','))
+
+print(t)
+
+#%%
+
+#problem 5
+
+class student:
+    name=None
+    def __init__(self,name):
+        self.name = name
+    def setString(self,name):
+        self.name=name
+    def getString(self):
+        return self.name
+
+s=input()
+s1=student(s)
+print(s1.getString() )   
+
+#%%
+
+#problem 6
+
+import numpy as np
+
+c=int(input())
+d=int(input())
+h=int(input())
+
+ans=np.sqrt( (2*c*d)/h)
+
+print(ans)
+
+#%%
+
+#problem 7
+
+n=int(input())
+
+m=int(input())
+
+x = [[0]*m ]*n
+
+for i in range(0,n):
+    s=[]
+    for j in range(0,m):
+        #print(i*j," " )
+        s.append(i*j)
+        
+    print(s)    
+
+#%%
+
+#problem 8
+
+import numpy as np
+
+s=input()
+
+a=s.split(",")
+
+a=np.sort(a)
+
+print(a)
+
+
+#%%
+
+#problem 9
+
+while(True):
+
+ s=input()
+
+ s=s.upper()
+ print(s)
+
+#%%
+
+#problem 10
+
+s=input()
+
+a=s.split(" ")
+
+p=set()
+
+for i in a:
+    p.add(i)
+
+l=[]
+
+for i in p:
+    l.append(i)
+
+l=np.sort(l)
+
+print(l)
+
+#%%
+
+#problem 100: Write a program to solve a classic ancient Chinese puzzle: 
+#We count 35 heads and 94 legs among the chickens and rabbits in a farm. How many rabbits and how many chickens do we have?
+
+
+def solve(head,leg):
+    
+    for i in range(head+1):
+        j=head-i
+        if 2*i+4*j==leg:
+            print(i," ",j)
+            return
+    
+    print("impossible")
+
+leg=94
+head=35
+
+solve(head,leg)
+
+#%%
+
+#problem 96: Please write a program which accepts a string from console and print it in reverse order.
+
+s=input()
+
+a=s.split(" ")
+
+l=[]
+
+for i in a:
+   l.append(i[::-1])
+    
+   # print(i[:-1] )
+
+print(l)
+
+#%%
+
+#problem 89: Please write a program which count and print the numbers of each character in a string input by console.
+
+count=set()
+
+s=input()
+
+for i in s:
+    count.add(i)
+
+ans=[]
+
+for i in count:
+    ans.append((i,s.count(i)) )
+
+print(ans)
+
+
+#%%
+
+#problem 90: Please write a program which accepts a string from console and print the characters that have even indexes.
+
+s=input()
+
+k=[]
+
+for i in range(0,len(s),1):
+    if i%2==0: k.append(s[i])
+
+print(k)
+
+#%%
+
+#problem: In case of input data being supplied to the question, it should be assumed to be a console input. 
+
+a=input()
+
+d={"U":0, "L":0}
+for c in s:
+    if c.isupper():
+        d["U"]+=1
+    elif c.islower():
+        d["L"]+=1
+    else:
+        pass
+print(d["U"])
+print(d["L"])
+
+
+#%%
+
+#%
+
+#Write a program that computes the net amount of a bank account based a transaction log from console input. The transaction log format is shown as following:
+#D 100
+#W 200
+
+#D means deposit while W means withdrawal.
+
+#
+
+Amount = 0
+while True:
+    s = input()
+    if not s:
+        break
+    values = s.split(" ")
+    operation = values[0]
+    amount = int(values[1])
+    if operation=="D":
+        Amount+=amount
+    elif operation=="W":
+        Amount-=amount
+    else:
+        pass
+print (Amount)
+
+#%%
+
+#question Define a function that can convert a integer into a string and print it in console.
+
+def solve(n):
+ print(str(int(n)))
+
+solve(3)
+
+
+#%%
+
+#question: Define a function that can receive two integral numbers in string form and compute their sum and then print it in console. 
+
+def printValue(s1,s2):
+	print(int(s1)+int(s2))
+
+a=(input())
+b=(input() )
+
+printValue(a,b) 
+
+
+#%%
+
+#qustion: Define a function that can accept two strings as input and print the string with maximum length in console. If two strings have the same length, then the function should print al l strings line by line.
+
+def printValue(a,b):
+	len1 = len(a)
+	len2 = len(b)
+	if len1>len2:
+		print(a)
+	elif len2>len1:
+		print(b)
+	else:
+		print(a)
+		print(b)
+		
+
+printValue("amit","arpon")
+
+#%%
+
+#question: Define a function that can accept an integer number as input and print the "It is an even number" if the number is even, otherwise print "It is an odd number".
+
+def solve(n):
+	if n%2 == 0:
+		print("even")
+	else:
+		print("odd")
+		
+u=int(input())
+
+solve(u)
+
+
+#%%
+
+#question: Define a function which can print a dictionary where the keys are numbers between 1 and 3 (both included) and the values are square of keys.
+
+def printDict():
+	d=dict()
+	d[1]=1
+	d[2]=2**2
+	d[3]=3**2
+	print(d)
+		
+
+printDict()
+
+
+#%%
+
+#question: Define a function which can print a dictionary where the keys are numbers between 1 and 20 (both included) and the values are square of keys.
+
+def printDict():
+	d=dict()
+	for i in range(1,21):
+		d[i]=i*i
+	print(d)
+		
+
+printDict()
+
+#%%
+
+#question: Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print the first 5 elements in the list.
+
+def solve():
+	li=list()
+	for i in range(1,21):
+		li.append(i**2)
+	print(li[:5])
+		
+
+solve()
+
+#%%
+
+#question: Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print the last 5 elements in the list.
+
+def solve():
+	li=list()
+	for i in range(1,21):
+		li.append(i**2)
+	print(li[-5:])
+		
+
+solve()
+
+#%%
+
+#question: Define a class named American which has a static method called printNationality.
+
+class country(object):
+    @staticmethod
+    def solve():
+        print("America")
+
+con = country()
+con.solve()
+country.solve()
+
+
+#%%
+
+#question: Define a class named Circle which can be constructed by a radius. The Circle class has a method which can compute the area. 
+
+
+class Circle(object):
+    def __init__(self, r):
+        self.radius = r
+
+    def area(self):
+        return self.radius**2*3.14
+
+v=input()
+a = Circle(int(v ) )
+print(a.area())
+
+#%%
+
+#question: Define a class named Rectangle which can be constructed by a length and width. The Rectangle class has a method which can compute the area. 
+
+class Rectangle(object):
+    def __init__(self, l, w):
+        self.l = l
+        self.w  = w
+
+    def area(self):
+        return self.l*self.w
+
+l=input()
+w=input()
+
+a = Rectangle(int(l),int(w))
+print(a.area())
+
+#%%
+
+#question: Define a class named Shape and its subclass Square. The Square class has an init function which takes a length as argument. Both classes have a area function which can print the area of the shape where Shape's area is 0 by default.
+
+class Shape(object):
+    def __init__(self):
+        pass
+
+    def area(self):
+        return 0
+
+class Square(Shape):
+    def __init__(self, l):
+        Shape.__init__(self)
+        self.l = l
+
+    def area(self):
+        return self.l*self.l
+
+a= Square(3)
+print (a.area())
+
+#%%
+
+#question: Write a function to compute 5/0 and use try/except to catch the exceptions.
+
+def throws():
+    return 5/0
+
+try:
+    throws()
+except ZeroDivisionError:
+    print("division by zero!")
+except Exception:
+    print("Caught an exception")
+finally:
+    print ("In finally block for cleanup")
+
+#%%
+
+#question: To define a custom exception, we need to define a class inherited from Exception.
+
+class ErrorMessage(Exception):
+   
+
+    def __init__(self, msg):
+        self.msg = msg
+
+error = ErrorMessage("something wrong")
+
+#%%
+
+#question: With a given tuple (1,2,3,4,5,6,7,8,9,10), write a program to print the first half values in one line and the last half values in one line. 
+
+a=(1,2,3,4,5,6,7,8,9,10)
+a1=a[:5]
+a2=a[5:]
+print (a1)
+print (a2)
+
+#%%
+
+#question: In case of input data being supplied to the question, it should be assumed to be a console input.
+
+n=int(input())
+s=0.0
+for i in range(1,n+1):
+    s += float(float(i)/(i+1))
+print(sum)
+
+#%%
+
+#question: In case of input data being supplied to the question, it should be assumed to be a console input.
+
+def f(n):
+    if n==0:
+        return 0
+    else:
+        return f(n-1)+50
+
+n=int(input() )
+print(f(n))
+
+#%%
