@@ -1,0 +1,188 @@
+import matplotlib.pyplot
+import pandas as pd
+
+#%%
+
+df=pd.read_csv( 'dataset_lab04.csv' )
+
+print( type(df) )
+
+print(df)
+
+#%%
+
+print("head: \n\n",df.head() )
+
+print("tail: \n\n",df.tail() )
+
+print("description: \n\n",df.describe() )
+
+#%%
+
+df.columns=['Time','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15','V16','V17','V18','V19','V20','V21','V22','V23','V24','V25','V26','V27','V28','Amount','Class']
+
+#%%
+
+b=df['Time']
+
+print("\n\Time informations\n\n")
+
+print( "variety mean: ",b.mean() )
+print("variety median: ",b.median())
+print("1st quartile: ",b.quantile(0.25) )
+print("2nd quartile: ",b.quantile(0.50) )
+print("3rd quartile: ",b.quantile(0.75))
+print("variety standard daviance: ",b.std() )
+print("variety daviance: ",b.var() )
+print("variety max: ",b.max() )
+print("variety min: ",b.min())
+print("variety skew: ",b.skew() )
+print("variety curtosis: ",b.kurt())
+
+#%%
+
+b=df['Amount']
+
+print("\n\Amount informations\n\n")
+
+print( "variety mean: ",b.mean() )
+print("variety median: ",b.median())
+print("1st quartile: ",b.quantile(0.25) )
+print("2nd quartile: ",b.quantile(0.50) )
+print("3rd quartile: ",b.quantile(0.75))
+print("variety standard daviance: ",b.std() )
+print("variety daviance: ",b.var() )
+print("variety max: ",b.max() )
+print("variety min: ",b.min())
+print("variety skew: ",b.skew() )
+print("variety curtosis: ",b.kurt())
+
+#%%
+
+df.boxplot( column=[ 'Time' ] )
+
+df.boxplot( column=['Amount'] )
+
+#%%
+
+time=df[['Time']]
+
+time.hist( column = ['Time'] , bins=5 )
+
+print("time: \n\n",time)
+
+#%%
+
+amount=df[ ['Amount'] ]
+
+amount.hist( column=['Amount'],bins=5 )
+
+print("amount: \n\n",amount)
+
+#%%
+
+class0 = len(df[df['Time']==0])*100
+class1 = len(df[df['Amount']==1])*100
+
+print("Percentage of 0 :",class0/len(df['Time']))
+print("Percentage of 1 :",class1/len(df['Amount']))
+
+#%%
+
+import matplotlib.pyplot as plt
+
+a=class0/len(df['Time'])
+
+b=class1/len(df['Amount'])
+
+plt.bar( df['Time'],a )
+
+plt.show()
+
+#%%
+
+plt.bar( df['Amount'],b )
+
+plt.show()
+
+#%%
+
+df.hist(column=['Time'],bins=5)
+
+#df[df['Time']==0].hist( co )
+
+#%%
+
+df.hist( column = [ 'Amount' ],bins=5  )
+
+#%%
+
+df.boxplot( column = ['Time' ] )
+
+#%%
+
+df.hist( column=[ 'V1','V2','V3','V4','V5','V6' ],bins=5 )
+
+#%%
+
+cp=df[ ['V1','V2','V3','V4','V5','V6'] ].copy()
+
+c=cp.corr()
+
+pos=c[c>0]
+
+pos.hist( column=[ 'V1','V2','V3','V4','V5','V6'],bins=5 )
+
+matplotlib.pyplot.show()
+
+#%%
+
+neg=c[c<0]
+
+neg.hist( column=[ 'V1','V2','V3','V4','V5','V6'],bins=5 )
+
+#%%
+
+print("positive kurtosis: \n\n",pos.kurtosis() )
+
+print("negative kurtosis: \n\n", neg.kurtosis())
+
+#%%
+
+#pos.sort_values()
+
+p=df.corr()
+
+pos=p[p>0]
+
+pos.sort_values(by=['Time','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15','V16','V17','V18','V19','V20','V21','V22','V23','V24','V25','V26','V27','V28','Amount','Class'])[['Time','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15','V16','V17','V18','V19','V20','V21','V22','V23','V24','V25','V26','V27','V28','Amount','Class']].head()
+
+print(pos.max() )
+
+#%%
+
+p=df.corr()
+
+neg=p[p<0]
+
+neg.sort_values(by=['Time','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15','V16','V17','V18','V19','V20','V21','V22','V23','V24','V25','V26','V27','V28','Amount','Class'])[['Time','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12','V13','V14','V15','V16','V17','V18','V19','V20','V21','V22','V23','V24','V25','V26','V27','V28','Amount','Class'] ].head()
+
+print(neg.max())
+
+#%%
+
+df.plot.scatter(x = 'V2', y = 'Amount')
+#%%
+
+Non_Fraudulent = len(df[df['Class']==0])*100
+Fraudulent = len(df[df['Class']==1])*100
+
+a = Non_Fraudulent/len(df['Class'])
+b = Fraudulent/len(df['Class'])
+x = [0,1]
+y = [a,b]
+plt.bar(x,y)
+
+plt.show()
+
+#%%
